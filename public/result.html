@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random Users - Results</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -13,7 +14,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: #000000;
             min-height: 100vh;
             padding: 20px;
         }
@@ -25,36 +26,32 @@
         }
 
         .header h1 {
-            color: white;
+            color: #ffffff;
             font-size: 2.5rem;
             margin-bottom: 10px;
             font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .header p {
-            color: rgba(255, 255, 255, 0.9);
+            color: #cccccc;
             font-size: 1.1rem;
         }
 
         .back-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: 2px solid #ffffff;
             padding: 12px 24px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            transition: background-color 0.3s ease;
             margin-bottom: 30px;
             display: inline-block;
         }
 
         .back-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.5);
-            transform: translateY(-2px);
+            background-color: #333333;
         }
 
         .users-container {
@@ -70,63 +67,45 @@
         }
 
         .user-card {
-            background: rgba(255, 255, 255, 0.95);
+            background-color: #1a1a1a;
+            border: 2px solid #ffffff;
             border-radius: 20px;
             padding: 30px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
+            box-shadow: 0 15px 35px rgba(255, 255, 255, 0.1);
             position: relative;
-            overflow: hidden;
-        }
-
-        .user-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-        }
-
-        .user-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
 
         .user-avatar {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background-color: #333333;
+            border: 2px solid #ffffff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+            color: #ffffff;
             font-size: 1.8rem;
             font-weight: bold;
             margin: 0 auto 20px;
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
         }
 
         .user-name {
             font-size: 1.4rem;
             font-weight: 700;
-            color: #333;
+            color: #ffffff;
             text-align: center;
             margin-bottom: 8px;
         }
 
         .user-username {
             text-align: center;
-            color: #667eea;
+            color: #cccccc;
             font-weight: 600;
             margin-bottom: 20px;
             font-size: 0.95rem;
         }
 
-        
         .info-item {
             display: flex;
             align-items: center;
@@ -138,27 +117,29 @@
             width: 20px;
             margin-right: 12px;
             text-align: center;
-            color: #667eea;
+            color: #ffffff;
+            font-size: 1rem;
         }
 
         .info-text {
-            color: #555;
+            color: #aaaaaa;
             flex: 1;
             font-size: 0.95rem;
         }
 
         .info-text a {
-            color: #667eea;
+            color: #ffffff;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .info-text a:hover {
-            color: #764ba2;
+            color: #cccccc;
         }
 
         .company-info {
-            background: rgba(102, 126, 234, 0.1);
+            background-color: #2a2a2a;
+            border: 1px solid #444444;
             border-radius: 12px;
             padding: 15px;
             margin-top: 20px;
@@ -166,19 +147,19 @@
 
         .company-name {
             font-weight: 600;
-            color: #333;
+            color: #ffffff;
             margin-bottom: 5px;
         }
 
         .company-catchphrase {
             font-style: italic;
-            color: #666;
+            color: #aaaaaa;
             font-size: 0.9rem;
         }
 
         .loading {
             text-align: center;
-            color: white;
+            color: #ffffff;
             font-size: 1.2rem;
             padding: 60px 20px;
         }
@@ -186,8 +167,8 @@
         .spinner {
             width: 50px;
             height: 50px;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            border-top: 4px solid white;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid #ffffff;
             border-radius: 50%;
             margin: 0 auto 20px;
             animation: spin 1s linear infinite;
@@ -200,7 +181,7 @@
 
         .no-data {
             text-align: center;
-            color: white;
+            color: #ffffff;
             padding: 60px 20px;
         }
 
@@ -211,7 +192,7 @@
 
         .no-data p {
             margin-bottom: 25px;
-            opacity: 0.9;
+            color: #aaaaaa;
         }
 
         @media (max-width: 768px) {
@@ -228,32 +209,12 @@
                 padding: 25px;
             }
         }
-
-        .fade-in {
-            animation: fadeIn 0.6s ease-out forwards;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .stagger-1 { animation-delay: 0.1s; }
-        .stagger-2 { animation-delay: 0.2s; }
-        .stagger-3 { animation-delay: 0.3s; }
-        .stagger-4 { animation-delay: 0.4s; }
-        .stagger-5 { animation-delay: 0.5s; }
-        .stagger-6 { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
     <div class="users-container">
         <div class="header">
-            <a href="/" class="back-btn">← Back to Home</a>
+            <a href="/" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
             <h1>Your Random Users</h1>
             <p>Here are the amazing profiles we found for you</p>
         </div>
@@ -264,7 +225,7 @@
         </div>
 
         <div id="noData" class="no-data" style="display: none;">
-            <h2>🚫 No Data Found</h2>
+            <h2>No Data Found</h2>
             <p>Oops! It looks like there are no users to display.</p>
             <a href="/" class="back-btn">Fetch Some Users</a>
         </div>
@@ -293,9 +254,9 @@
 
             grid.style.display = 'grid';
             
-            users.forEach((user, index) => {
+            users.forEach((user) => {
                 const userCard = document.createElement('div');
-                userCard.className = `user-card fade-in stagger-${index + 1}`;
+                userCard.className = 'user-card';
                 
                 userCard.innerHTML = `
                     <div class="user-avatar">${getInitials(user.name)}</div>
@@ -304,26 +265,26 @@
                     
                     <div class="user-info">
                         <div class="info-item">
-                            <div class="info-icon">📧</div>
+                            <div class="info-icon"><i class="fas fa-envelope"></i></div>
                             <div class="info-text">
                                 <a href="mailto:${user.email}">${user.email}</a>
                             </div>
                         </div>
                         
                         <div class="info-item">
-                            <div class="info-icon">📱</div>
+                            <div class="info-icon"><i class="fas fa-phone"></i></div>
                             <div class="info-text">${user.phone}</div>
                         </div>
                         
                         <div class="info-item">
-                            <div class="info-icon">🌐</div>
+                            <div class="info-icon"><i class="fas fa-globe"></i></div>
                             <div class="info-text">
                                 <a href="http://${user.website}" target="_blank">${user.website}</a>
                             </div>
                         </div>
                         
                         <div class="info-item">
-                            <div class="info-icon">📍</div>
+                            <div class="info-icon"><i class="fas fa-map-pin"></i></div>
                             <div class="info-text">
                                 ${user.address.city}, ${user.address.zipcode}
                             </div>
@@ -331,7 +292,7 @@
                     </div>
                     
                     <div class="company-info">
-                        <div class="company-name">🏢 ${user.company.name}</div>
+                        <div class="company-name"><i class="fas fa-building"></i> ${user.company.name}</div>
                         <div class="company-catchphrase">${user.company.catchPhrase}</div>
                     </div>
                 `;
@@ -348,33 +309,6 @@
             setTimeout(() => {
                 displayUsers(users);
             }, 1000);
-        });
-
-        // Add some interactive card effects
-        document.addEventListener('mousemove', (e) => {
-            const cards = document.querySelectorAll('.user-card');
-            cards.forEach(card => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                if (x >= 0 && x <= rect.width && y >= 0 && y <= rect.height) {
-                    const centerX = rect.width / 2;
-                    const centerY = rect.height / 2;
-                    
-                    const rotateX = (y - centerY) / 15;
-                    const rotateY = (centerX - x) / 15;
-                    
-                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-                }
-            });
-        });
-
-        document.addEventListener('mouseleave', () => {
-            const cards = document.querySelectorAll('.user-card');
-            cards.forEach(card => {
-                card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-            });
         });
     </script>
 </body>
